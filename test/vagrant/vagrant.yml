@@ -1,0 +1,14 @@
+---
+recipes:
+  - gd_test_cookbook
+machines:
+  - name: trusty
+    default: true
+    box: bento/ubuntu-14.04
+    update_apt: true
+    memory: 2048
+    uuid: 6196e8cb-624f-4944-bf8f-c5cf06d45f63
+  - name: centos7
+    box: bento/centos-7.2
+    memory: 2048
+    uuid: 641f9c8c-2753-41ca-ad15-5cfa37796b88

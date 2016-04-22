@@ -1,0 +1,8 @@
+source 'https://supermarket.chef.io'
+
+this_dir = File.dirname(__FILE__)
+cookbook_base = File.expand_path(File.join(this_dir, '..', '..'))
+
+cookbook 'chef-server'
+cookbook 'gd_test_cookbook', path: File.join(cookbook_base, 'test', 'vagrant', 'gd_test_cookbook')
+cookbook 'grocery_delivery', path: cookbook_base

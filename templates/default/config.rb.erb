@@ -1,0 +1,8 @@
+<% unless node['grocery_delivery']['config_header'].empty? %>
+<%= node['grocery_delivery']['config_header'] %>
+<% end %>
+<% node['grocery_delivery']['config'].each do |key, value| %>
+<% if value.is_a?(String) %>
+<%= key %> <%= value %>
+<% end %>
+<% end %>
