@@ -4,7 +4,7 @@ grocery_delivery is a Chef cookbook to install and configure [Grocery Delivery](
 
 ## Usage
 
-In a typical configuration this recipe will be included on the Chef backend server.
+In a typical configuration this recipe should be included on a Chef backend server.
 
 ```ruby
 # The ['config'] and ['knife_config'] attributes are hashes of strings of Ruby code
@@ -17,9 +17,9 @@ include_recipe 'grocery_delivery'
 
 ## Settings
 
-The default settings used by this cookbook are different than the default settings are `grocery-delivery`, mainly to make the defaults saner for non-Facebook installation. For example this cookbook defaults to using `git` instead of `svn`.
+The default settings used by this cookbook are different than the default settings are `grocery-delivery`, mainly to make the defaults saner for non-Facebook installations. For example this cookbook defaults to using `git` instead of `svn`.
 
-All functionally of this cookbook have be disabled with `manage_*` attributes, allowing custom functionality.
+All functionally of this cookbook can be disabled with `manage_*` attributes, allowing custom functionality. For example set `['manage_cron'] = false` to use your in-house cron cookbook to manage cron.
 
 ```ruby
 default['grocery_delivery']['manage_git'] = true
@@ -42,7 +42,13 @@ The two required settings, for which there are no sane defaults are:
 * `node['grocery_delivery']['config']['repo_url']`
 * `node['grocery_delivery']['knife_config']['chef_server_url']`
 
-**Credentials are also required.** This cookbook does not manage version control credentials(e.g., SSH key for `git`) or Chef credentials (e.g., user/client key).
+**Credentials are also required.** This cookbook does not manage version control credentials (e.g., SSH key for `git`) or Chef credentials (e.g., user/client key). To use Git over SSH, write a private key to `/root/.ssh/<file name>` and create a `/root/.ssh/config` similar to:
+
+```
+Host github.com
+    IdentityFile ~/.ssh/<file name>
+    StrictHostKeyChecking no
+```
 
 ## Full Example
 
